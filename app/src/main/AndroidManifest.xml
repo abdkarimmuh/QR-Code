@@ -16,8 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScanActivity" />
-        <activity android:name=".GenerateActivity"></activity>
+        <activity
+            android:name=".ScanActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Scan QR Code"/>
+        <activity
+            android:name=".GenerateActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Generate QR Code"/>
     </application>
 
 </manifest>
