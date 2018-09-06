@@ -1,21 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
     tools:context=".GenerateActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:text="@string/title_screen_generate"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.10">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/content_qrcode"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Generate QR Code"/>
+            android:layout_weight="0.70" />
 
+        <Button
+            android:id="@+id/generate_qrcode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.30"
+            android:text="@string/btn_generate" />
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_margin="20dp"
+        android:id="@+id/image_qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.70" />
+
+    <Button
+        android:id="@+id/history"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:text="@string/btn_history" />
+
+</LinearLayout>
