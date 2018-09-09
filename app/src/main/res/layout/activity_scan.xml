@@ -14,19 +14,20 @@
         <SurfaceView
             android:id="@+id/cameraPreview"
             android:layout_width="match_parent"
-            android:layout_height="480px"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"/>
 
         <TextView
             android:id="@+id/txtResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cameraPreview"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
             android:text="@string/result_text_default"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:textSize="20sp"/>
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"/>
 
     </RelativeLayout>
 
