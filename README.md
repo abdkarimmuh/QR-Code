@@ -5,6 +5,7 @@
 * Generate QR Code
 * Save to Database 
 
-Download API [https://github.com/AslamPangestu/slim-uploadfile].
+[Download API](https://github.com/AslamPangestu/slim-uploadfile)
+.
 
-created by @Setakarim & @AslamPangestu
+created by [@setakarim](https://github.com/setakarim) & [@AslamPangestu](https://github.com/AslamPangestu)
