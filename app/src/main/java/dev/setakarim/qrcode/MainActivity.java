@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import dev.setakarim.qrcode.Generate.GenerateActivity;
+import dev.setakarim.qrcode.Scan.ScanActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btn_generate, btn_scan;

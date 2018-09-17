@@ -24,14 +24,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScanActivity"
+            android:name=".Scan.ScanActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".GenerateActivity"
+            android:name=".Generate.GenerateActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ResultScanActivity"
-            android:parentActivityName=".ScanActivity"/>
+            android:name=".Scan.ResultScanActivity"
+            android:parentActivityName=".Scan.ScanActivity"/>
     </application>
 
 </manifest>

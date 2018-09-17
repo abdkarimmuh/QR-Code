@@ -1,4 +1,4 @@
-package dev.setakarim.qrcode;
+package dev.setakarim.qrcode.Generate;
 
 import android.graphics.Bitmap;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +13,8 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+
+import dev.setakarim.qrcode.R;
 
 public class GenerateActivity extends AppCompatActivity {
 

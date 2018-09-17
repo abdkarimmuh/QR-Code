@@ -1,4 +1,4 @@
-package dev.setakarim.qrcode;
+package dev.setakarim.qrcode.Scan;
 
 import android.Manifest;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
 import dev.setakarim.qrcode.Model.Post;
+import dev.setakarim.qrcode.R;
 import dev.setakarim.qrcode.Service.APIService;
 import dev.setakarim.qrcode.Service.APIUtils;
 import retrofit2.Call;

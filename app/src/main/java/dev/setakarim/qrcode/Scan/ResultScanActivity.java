@@ -1,8 +1,10 @@
-package dev.setakarim.qrcode;
+package dev.setakarim.qrcode.Scan;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import dev.setakarim.qrcode.R;
 
 public class ResultScanActivity extends AppCompatActivity {
 
