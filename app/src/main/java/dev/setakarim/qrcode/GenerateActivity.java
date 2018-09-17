@@ -18,7 +18,7 @@ public class GenerateActivity extends AppCompatActivity {
 
     private ImageView imgQRCode;
     private EditText txtContent;
-    private Button btnGenerate, btnHistory;
+    private Button btnGenerate;
 
     public final static int QRCodeWidth = 500;
     Bitmap result;
@@ -31,7 +31,6 @@ public class GenerateActivity extends AppCompatActivity {
         txtContent = findViewById(R.id.content_qrcode);
         imgQRCode = findViewById(R.id.image_qrcode);
         btnGenerate = findViewById(R.id.generate_qrcode);
-        btnHistory = findViewById(R.id.history);
 
         btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,15 +39,10 @@ public class GenerateActivity extends AppCompatActivity {
                 try {
                     result = generate(content);
                     imgQRCode.setImageBitmap(result);
+                    store(content,result);
                 } catch (WriterException e) {
                     e.printStackTrace();
                 }
-            }
-        });
-        btnHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }
@@ -67,24 +61,22 @@ public class GenerateActivity extends AppCompatActivity {
             return null;
         }
         int bitMatrixWidth = bitMatrix.getWidth();
-
         int bitMatrixHeight = bitMatrix.getHeight();
-
         int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
-
         for (int y = 0; y < bitMatrixHeight; y++) {
             int offset = y * bitMatrixWidth;
-
             for (int x = 0; x < bitMatrixWidth; x++) {
-
                 pixels[offset + x] = bitMatrix.get(x, y) ?
                         ContextCompat.getColor(getApplicationContext(),R.color.black):
                         ContextCompat.getColor(getApplicationContext(),R.color.white);
             }
         }
         Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
-
         bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
         return bitmap;
+    }
+
+    private void store(String content, Bitmap qrcode){
+
     }
 }
