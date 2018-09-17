@@ -1,15 +1,17 @@
 package dev.setakarim.qrcode;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -18,14 +20,24 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import dev.setakarim.qrcode.Model.Post;
+import dev.setakarim.qrcode.Service.APIService;
+import dev.setakarim.qrcode.Service.APIUtils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ScanActivity extends AppCompatActivity {
 
-    SurfaceView cameraPreview;
-    TextView txtResult;
-    BarcodeDetector barcodeDetector;
-    CameraSource cameraSource;
+    private SurfaceView cameraPreview;
+    private BarcodeDetector barcodeDetector;
+    private CameraSource cameraSource;
 
     final int RequestCameraPermissionID = 1001;
+
+    private APIService APIService;
+
+    private static final String TAG = "Scan QRCode";
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -59,7 +71,8 @@ public class ScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scan);
 
         cameraPreview = (SurfaceView) findViewById(R.id.cameraPreview);
-        txtResult = (TextView) findViewById(R.id.txtResult);
+
+        APIService = APIUtils.getAPIService();
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.QR_CODE)
@@ -115,8 +128,28 @@ public class ScanActivity extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> qrcodes = detections.getDetectedItems();
                 if(qrcodes.size() != 0) {
-                    txtResult.setText(qrcodes.valueAt(0).displayValue);
+                    String result = qrcodes.valueAt(0).displayValue;
+                    Intent intent = new Intent(ScanActivity.this, ResultScanActivity.class);
+                    intent.putExtra("result", result);
+                    sentResult(result);
+                    startActivity(intent);
+                    cameraSource.stop();
                 }
+            }
+        });
+    }
+
+    private void sentResult(String result) {
+        APIService.savePost(result).enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                Log.i(TAG, "Post submitted to API");
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Log.e(TAG, "Unable to submit post to API.");
             }
         });
     }

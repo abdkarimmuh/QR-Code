@@ -17,18 +17,6 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"/>
 
-        <TextView
-            android:id="@+id/txtResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="@string/result_text_default"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"/>
-
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
